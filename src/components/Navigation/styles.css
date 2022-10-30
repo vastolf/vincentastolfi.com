@@ -1,0 +1,37 @@
+.navigation__list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+minimum button size 48x48 for Accessibility / SEO reasons, with 8px between the buttons
+*/
+.navigation__list-item {
+    line-height: 0;
+    flex: 1 1 0;
+    width: 48px;
+    height: 48px;
+    margin-right: 8px;
+}
+
+.navigation__link {
+    display: inline-flex;
+    color: inherit;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation__link-icon {
+    height: 24px;
+    fill: #eee;
+}
+
+.navigation__link:hover .navigation__link-icon {
+    fill: #EF6F6C;
+}

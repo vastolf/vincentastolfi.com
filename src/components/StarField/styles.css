@@ -1,0 +1,82 @@
+.star-field {
+    animation: fadeInAnimation 3s;
+}
+
+.star-field__small,
+.star-field__medium,
+.star-field__large {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    color: #a7cfff;
+    filter: blur(1px);
+    opacity: .75;
+    animation-name: starFieldAnimation;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/*
+Smaller stars would presumably move more slowly, because they are further away, so we make the animation-duration longer
+*/
+.star-field__small {
+    width: 1px;
+    height: 1px;
+    animation-duration: 180s;
+}
+
+.star-field__medium {
+    width: 2px;
+    height: 2px;
+    animation-duration: 135s;
+}
+
+.star-field__large {
+    width: 3px;
+    height: 3px;
+    animation-duration: 90s;
+}
+
+/*
+By inheriting the box shadows, we don't need to repeat the CSS for the box shadows twice per start-field__size
+We translate this "clone" up 450px, the height of the container (marquee) so that when the animation starts over, the
+Transition is seamless
+*/
+.star-field__clone {
+    box-shadow: inherit;
+    position: relative;
+    top: 450px;
+    height: 100%;
+}
+
+.star-field__egg {
+    position: absolute;
+    width: 1px;
+    animation: starFieldAnimation 45s linear infinite;
+    left: 200px;
+}
+
+@keyframes fadeInAnimation {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes starFieldAnimation {
+    0% {
+        transform: translateY(-450px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes eggAnim {
+    0% {
+        top: -30px
+    }
+    100% {
+        top: 110%;
+    }
+}

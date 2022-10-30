@@ -1,0 +1,15 @@
+.contact-form__submit-indicator {
+    background: #f6fff5;
+    padding: .25rem .5rem;
+    color: #095f02;
+    border: 1px solid;
+    margin-bottom: 1.45rem;
+    border-radius: 2px;
+    line-height: 24px;
+}
+
+.contact-form__submit-indicator-invalid {
+    border: 1px solid #a90400;
+    background: #fff4f4;
+    color: #a90400;
+}

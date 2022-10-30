@@ -1,0 +1,8 @@
+.bio__image {
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 6px;
+    width: 67px;
+    filter: saturate(0);
+}
