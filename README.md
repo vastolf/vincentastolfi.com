@@ -12,7 +12,7 @@ On this project, I'm most proud of the Star Field effect in the Hero section at 
 
 This was an adaptation of [Michael Becker's StarField effect](https://codepen.io/mindsculpt/pen/JJWEJE), and while his implementation was pure SCSS, I think my JS/CSS implementation improves on it substantially, in that:
 - It doesn't require the user to use SCSS
-- Uses much less CSS, as my box-shadows only include the color on the "bright" stars, the rest default to the parent div color
+- Uses much less CSS, as my box-shadows only include the color on the "bright" stars, the rest inherit from the parent div 
 - It allows the star field effect to be more easily limited to the actual height/width of its container (mine will not generate stars outside of the width of the container, unlike the original implementation)
 - Randomly chooses some stars to be brighter / different colors, which increases variability between the stars substantially
 - Allows you to more easily control the number of each size of star / the percentage of those that will be "bright"

@@ -1,7 +1,7 @@
 import axios from "axios"
 import { ContactSubmissionResponseProps, ContactFormValuesProps } from "./contactTypes";
 
-const contactSubmission = async (submission: ContactFormValuesProps) : Promise<ContactSubmissionResponseProps | null> => {
+export const contactSubmission = async (submission: ContactFormValuesProps) : Promise<ContactSubmissionResponseProps | null> => {
     let postReq = await axios.post('/api/contact', {...submission});
     // If the status is not 200, return null
     if (postReq?.status !== 200) return null;
@@ -10,5 +10,3 @@ const contactSubmission = async (submission: ContactFormValuesProps) : Promise<C
     // Otherwise, return the response data
     return postReq?.data;
 }
-
-export default contactSubmission;

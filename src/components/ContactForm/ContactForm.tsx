@@ -4,7 +4,7 @@ import FormTextField from '../FormTextField/FormTextField'
 import './styles.css'
 import { ContactFormValuesProps, ContactSubmissionResponseProps } from '../../utils/contactTypes'
 import { nameIsInvalid, emailIsInvalid, messageIsInvalid } from '../../utils/validate'
-const contactSubmission = require('../../utils/contactUtil').default;
+import { contactSubmission } from '../../utils/contactUtil';
 
 const ContactForm = () => {
     const NAME_ERROR_MESSAGE : string = "Must be between 3 and 30 characters"

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 const { vYG, generateStarsBoxShadowsString } = require('../../utils/starUtils');
 import './styles.css'
 
+// We only use these types here so we'll instantiate them directly in the template
 type StarFieldSettingsSizeProps = {
     stars: number,
     brightPercentage: number
