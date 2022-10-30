@@ -4,7 +4,7 @@ import './styles.css'
 const Footer = () => {
     return (
         <footer className="footer">
-            <div className="footer__info">That's it! <a href="#">View Source on Github</a></div>
+            <div className="footer__info">That's it! <a href="https://github.com/vastolf/vincentastolfi.com">View Source on Github</a></div>
         </footer>
     )
 }

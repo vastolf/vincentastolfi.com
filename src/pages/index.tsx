@@ -25,4 +25,4 @@ const IndexPage = () => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Vincent Astolfi CV</title>
+export const Head: HeadFC = () => <title>Vincent Astolfi - Resumé</title>
