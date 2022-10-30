@@ -35,7 +35,7 @@ type StarFieldSettingsSizeKeysProps = {
 // We instantiate a new component called StarField
 const StarField = (props: {height: number}) => {
     // Pass height from parent component; my height will be 450px, which we'll need to consider when writing the CSS
-    const {marqueeHeight} = props;
+    const {containerHeight} = props;
     // We're going to track the window width so we know how far out we can generate stars; you could easily use
     // the width of the parent component as well, but in my case my component width will always be the window width
     const [windowWidth, setWindowWidth] = useState<number>(0);
@@ -62,7 +62,7 @@ const StarField = (props: {height: number}) => {
     }, [])
 
     // Here, we set boxShadows on each size of star. The clone inherits
-    // The box shadows and offsets its top value to the marqueeHeight in the styles.css to make the animation seamless
+    // The box shadows and offsets its top value to the containerHeight in the styles.css to make the animation seamless
     // windowWidth is always initialized as 0, so if it's greater, we know it's been set properly by the useEffect & therefore
     // we can render the StarField
     return (
@@ -73,7 +73,7 @@ const StarField = (props: {height: number}) => {
                         return <div
                             className={'star-field__'+size}
                             style={{boxShadow : generateStarsBoxShadowsString(
-                                marqueeHeight,
+                                containerHeight,
                                 windowWidth,
                                 STAR_FIELD_SETTINGS[size]?.stars,
                                 STAR_FIELD_SETTINGS[size]?.brightPercentage)
@@ -95,20 +95,20 @@ const StarField = (props: {height: number}) => {
 
 ```typescript
 const generateStarsBoxShadowsString = (
-        marqueeHeight: number,
+        containerHeight: number,
         windowWidth: number,
         stars: number,
         brightPercentage: number
     ) : string => {
     // instantiate an empty string, which we will append to when adding the box shadows (stars)
     let boxShadowString = '';
-    // Generate Stars using Box Shadows between windowWidth and marqueeHeight
+    // Generate Stars using Box Shadows between windowWidth and containerHeight
     for (let i = 0; i < stars; i++) {
         boxShadowString += getSingleBoxShadowString(
             // Random X value, cannot be greater than windowWidth
             randomMaxIntInclusive(windowWidth),
-            // Random Y value, cannot be greater than marqueeHeight
-            randomMaxIntInclusive(marqueeHeight),
+            // Random Y value, cannot be greater than containerHeight
+            randomMaxIntInclusive(containerHeight),
             // Random boolean based on brightPercentage (helps introduce vairability in brightness between stars of a size)
             // This works by generating a random # between 0 - 100, and checking if brightPercentage is greater; in this way
             // we can randomly (in a psuedo-random way) assign certain stars to be "brighter" at a rate we define 
