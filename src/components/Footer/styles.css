@@ -7,6 +7,10 @@
     position: relative;
 }
 
+.footer__info {
+    position: relative;
+}
+
 .footer a {
     text-decoration: none;
     border-bottom: 1px dotted;
