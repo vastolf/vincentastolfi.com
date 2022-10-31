@@ -24,7 +24,13 @@ const config: GatsbyConfig = {
         ],
         mergeCachingHeaders: true
       },
-    }
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icon: 'src/images/fav.png',
+      },
+    },
   ]
 };
 
