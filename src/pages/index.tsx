@@ -25,4 +25,10 @@ const IndexPage = () => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Vincent Astolfi - Resumé</title>
+export const Head: HeadFC = () => (
+  <>
+    <title>Vincent Astolfi - Resumé</title>
+    <meta name="description" content="A developer resumé site for Vincent Astolfi. View my work history & skillset, or get in contact with me."></meta>
+  </>
+);
+

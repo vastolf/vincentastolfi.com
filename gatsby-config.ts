@@ -9,12 +9,14 @@ const config: GatsbyConfig = {
     siteUrl: `https://vincentastolfi.com`
   },
   graphqlTypegen: true,
-  plugins: [{
-    resolve: 'gatsby-plugin-google-analytics',
-    options: {
-      "trackingId": process?.env?.GOOGLE_ANALYTICS_TRACKING_ID
+  plugins: [
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        "trackingId": process?.env?.GOOGLE_ANALYTICS_TRACKING_ID
+      }
     }
-  }]
+  ]
 };
 
 export default config;
