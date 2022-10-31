@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import type { HeadFC } from "gatsby"
 import Layout from "../components/Layout/Layout"
 import Header from "../components/Header/Header"
@@ -27,8 +27,8 @@ export default IndexPage
 
 export const Head: HeadFC = () => (
   <>
-    <title>Vincent Astolfi - Resumé</title>
-    <meta name="description" content="A developer resumé site for Vincent Astolfi. View my work history & skillset, or get in contact with me."></meta>
+    <title>Vincent Astolfi - Resume</title>
+    <meta name="description" content="A developer resume site for Vincent Astolfi. View my work history & skillset, or get in contact with me."></meta>
   </>
 );
 

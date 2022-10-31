@@ -1,4 +1,4 @@
-# Vincent Astolfi - CV / Resumé
+# Vincent Astolfi - CV / Resume
 This is a simple single-page APP that hosts my work experience and a contact form.
 
 It's build in React, using Gatsby as a framework. I chose Gatsby because it's a great tool for making static sites, especially when the content doesn't change much. It has an easy to use Backend (cloud/serverless) Functions feature, which I utilized to handle contact form submissions & send myself email notifications. GatsbyJS also offers free hosting for a single project, so it's entirely free to host and maintain. 

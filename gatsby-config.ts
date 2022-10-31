@@ -5,7 +5,7 @@ require('dotenv').config({
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `Vincent Astolfi - Resumé`,
+    title: `Vincent Astolfi - Resume`,
     siteUrl: `https://vincentastolfi.com`
   },
   graphqlTypegen: true,
