@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'gatsby'
 import Navigation from '../Navigation/Navigation'
 import './styles.css'
 
@@ -19,7 +20,7 @@ const Header = () => {
     
     return (
         <header className="header" style={{background: "rgb(25 25 25 / " + (pageYOffset >= maxOpacity ? maxOpacity : pageYOffset) + "%)"}}>
-            <div className="header__heading">{((pageYOffset == 0 || pageYOffset < maxOpacity) ? "VA" : "Vincent Astolfi")}</div>
+            <Link to="/" className="header__heading">{((pageYOffset == 0 || pageYOffset < maxOpacity) ? "VA" : "Vincent Astolfi")}</Link>
             <Navigation />
         </header>
     )

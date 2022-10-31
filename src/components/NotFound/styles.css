@@ -9,6 +9,7 @@
 
 .not-found {
     padding: 2rem 1.5rem;
+    position: relative;
 }
 
 .not-found__heading {
@@ -20,7 +21,7 @@
 .not-found__sub-heading {
     font-size: 24px;
     font-weight: 300;
-    margin-bottom: 4rem;
+    margin-bottom: 2.75rem;
 }
 
 .not-found__button {

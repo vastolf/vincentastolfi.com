@@ -23,7 +23,7 @@ const Marquee = () => {
             <div className="marquee__background-wrapper">
                 <div className="marquee__background"></div>
                 {(marqueeContentHeight) > 0 &&
-                    <StarField marqueeHeight={marqueeContentHeight}/>
+                    <StarField containerHeight={marqueeContentHeight} />
                 }
             </div>
             <div className="marquee__content" ref={marqueeContentRef}>

@@ -21,11 +21,11 @@ const NotFound = () => {
     return (
         <div className="not-found__wrapper" ref={notFoundRef}>
             {notFoundHeight > 0 &&
-                <StarField marqueeHeight={notFoundHeight}/>
+                <StarField containerHeight={notFoundHeight} />
             }
             <div className="not-found">
                 <h1 className="not-found__heading">Uh-oh! Looks like you're lost</h1>
-                <div className="not-found__sub-heading">404: This site only has one page, so let's get you back on track</div>
+                <div className="not-found__sub-heading"><strong>404:</strong> This site only has one page. Let's get you back on track:</div>
                 <Link aria-label={"Return to home page"} className="not-found__button" to={"/"} >Go Home</Link>
             </div>
         </div>
