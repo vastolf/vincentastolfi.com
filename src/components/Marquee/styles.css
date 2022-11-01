@@ -28,7 +28,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 450px;
+    height: 320px;
     color: #eee;
 }
 
@@ -41,8 +41,8 @@
 
 .marquee__heading {
     margin: 0 0 1.5rem;
-    font-size: 52px;
-    line-height: 48px;
+    line-height: 38px;
+    font-size: 36px;
 }
 
 .marquee__icons-wrapper {
@@ -53,12 +53,29 @@
 
 .marquee__icon {
     fill: #eee;
-    height: 48px;
-    width: 48px;
+    height: 38px;
+    width: 38px;
 }
 
 .marquee__description {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 300;
     margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 650px) {
+    .marquee__content {
+        height: 450px;
+    }
+    .marquee__heading {
+        font-size: 52px;
+        line-height: 48px;
+    }
+    .marquee__icon {
+        height: 48px;
+        width: 48px;
+    }
+    .marquee__description {
+        font-size: 24px;
+    }
 }
