@@ -17,6 +17,14 @@ minimum button size 48x48 for Accessibility / SEO reasons, with 8px between the 
     margin-right: 8px;
 }
 
+.navigation__list-item:first-of-type a {
+    justify-content: end;
+}
+
+.navigation__list-item:last-of-type {
+    margin-right: 0;
+}
+
 .navigation__link {
     display: inline-flex;
     color: inherit;

@@ -15,7 +15,7 @@ const Experience = () => {
                 <h3 className="experience__title">Senior Developer, <a href="https://desarol.com/" target="_blank">Desarol LLC</a></h3>
                 <div className="experience__subtitle">2016 - 2022</div>
                 <p>I became a Senior Developer at <a href="https://desarol.com/" target="_blank">Desarol</a> starting in 2020, and worked as a Junior in years prior. My main role was to build and manage the website of a major hotel corporation called <a href="https://sonesta.com/" target="_blank">Sonesta</a>.</p>
-                <p>We initially built the project in Drupal 7, which we moved to D8, and eventually into React. A year or so after the project went headless, I was made the project lead and have been in that role ever since.</p>
+                <p>We initially built the project in Drupal 7, which we moved to D8, and eventually into React. About a year after the project went headless, I was made the project lead and have been in that role ever since.</p>
                 <p id="notable-accomplishments"><strong>Notable accomplishments on this project:</strong></p>
                 <ul className="experience__list" aria-describedby="notable-accomplishments">
                     <li>I helped to develop &amp; implement a continuous integration workflow</li>

@@ -1,19 +1,19 @@
 // Used for generating random Integers between 0 & a max value (inclusive)
 const randomMaxIntInclusive = (max: number) : number => {
-    return Math.floor(Math.random() * max);
+    return Math.round(Math.random() * max);
 }
 
 // Introduces even more variability by giving bright stars random different colors (from a pre-defined list)
-// White, Yellow, Orange
+// White, Yellow, Red
 const getRandomBrightColor = () : String => {
-    const brightColors : Array<String> = ["#eee", "#fff5c0", "#ffc4a6"]
+    const brightColors : Array<String> = ["#c8c8c8", "#b9b398", "#b7948c"]
     return brightColors[randomMaxIntInclusive(brightColors.length - 1)];
 }
 
 // x = x coord of box shadow, y = y coord, makeBright = whether or not we should make this star "bright" by setting its
 // color to white; because we randomly set makeBright to true based on a percentage chance, this introduces more variability
 // in the stars
-// returns something like "508px 341px," or "437px 871px #eee," depending on if makeBright is true or not
+// returns something like "508px 341px," or "437px 871px #c8c8c8," depending on if makeBright is true or not
 const getSingleBoxShadowString = (x: number, y: number, makeBright: boolean) : string => {
     return x + 'px ' + y + 'px' + (makeBright ? ' ' + getRandomBrightColor() + ',' : ',');
 }
