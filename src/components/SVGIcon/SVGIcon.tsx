@@ -1,5 +1,5 @@
 import React from 'react'
-import SVGIconName from './SVGIconName';
+import type SVGIconName from './SVGIconName';
 
 const SVGIcon = (props: {name: SVGIconName, className?: string}) => {
     const {name, className} = props;

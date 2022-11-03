@@ -31,6 +31,14 @@ const config: GatsbyConfig = {
         icon: 'src/images/fav.png',
       },
     },
+    `gatsby-plugin-mdx`,
+     {
+       resolve: `gatsby-source-filesystem`,
+       options: {
+         name: `posts`,
+         path: `${__dirname}/src/posts`,
+       },
+     },
   ]
 };
 
