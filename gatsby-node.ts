@@ -1,10 +1,30 @@
+import type { GatsbyNode } from "gatsby";
 const path = require("path")
 const postTemplate = path.resolve(`./src/templates/post.tsx`)
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+type NodePost = {
+    id: number
+    frontmatter: {
+        title: string
+        tagline: string
+        slug: string
+        background: string
+    }
+    internal: {
+        contentFilePath: string
+    }
+}
+
+type MdxData = {
+    allMdx: {
+        nodes: NodePost[]
+    }
+}
+
+export const createPages : GatsbyNode["createPages"] = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  const result = await graphql(`
+  const result = await graphql<MdxData>(`
     query {
       allMdx {
         nodes {
@@ -28,10 +48,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   // Create blog post pages.
-  const posts = result.data.allMdx.nodes
+  const posts = result?.data?.allMdx?.nodes
 
   // you'll call `createPage` for each result
-  posts.forEach(node => {
+  posts?.forEach(node => {
     createPage({
       // As mentioned above you could also query something else like frontmatter.title above and use a helper function
       // like slugify to create a slug
