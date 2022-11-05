@@ -6,8 +6,7 @@ import NotFound from "../components/NotFound/NotFound"
 
 const NotFoundPage = () => {
   return (
-    <Layout>
-      <Header />
+    <Layout hideFooter={true}>
       <NotFound />
     </Layout>
   )

@@ -1,0 +1,8 @@
+.skip-to-main {
+    position: absolute;
+    left: -9999px;
+}
+
+.skip-to-main:focus {
+    position: static;
+}

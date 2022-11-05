@@ -18,6 +18,7 @@ const Bio = () => {
     
     return (
         <Section
+            id={"about-me"}
             title={"About Me"}
             flair={
                 <img className="bio__image" src="/me.png" alt="A small photo of Vincent" />
