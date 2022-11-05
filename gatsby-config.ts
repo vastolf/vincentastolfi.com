@@ -13,7 +13,8 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        "trackingId": process?.env?.GOOGLE_ANALYTICS_TRACKING_ID
+        trackingId: process?.env?.GATSBY_GA_TRACKING_ID,
+        defer: true
       }
     },
     {
