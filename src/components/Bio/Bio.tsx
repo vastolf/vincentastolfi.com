@@ -1,5 +1,6 @@
 import React from 'react'
 import Section from '../Section/Section'
+import CDNImage from '../CDNImage/CDNImage'
 import './styles.css'
 
 const Bio = () => {
@@ -21,7 +22,7 @@ const Bio = () => {
             id={"about-me"}
             title={"About Me"}
             flair={
-                <img className="bio__image" src="/me.png" alt="A small photo of Vincent" />
+                <CDNImage className="bio__image" src="/me.png" alt="A small photo of Vincent" width="67" height="81" />
             }
         >
             <p>I am a {calculateYearsSince("01/17/1996")}-year-old Developer originally from San Diego, CA, currently based in Costa Rica. Mother tongue is English, but I'm also fluent in Spanish.</p>
