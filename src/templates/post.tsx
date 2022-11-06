@@ -26,7 +26,7 @@ export default function PostTemplate({ data, children }) {
 
 export const Head: HeadFC = ({data}) => (
   <>
-    <title>Vincent Astolfi - {data?.mdx?.frontmatter?.title}</title>
+    <title>{data?.mdx?.frontmatter?.title} - Vincent Astolfi</title>
     <meta name="description" content={data?.mdx?.frontmatter?.tagline}></meta>
   </>
 );
