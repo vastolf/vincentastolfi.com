@@ -89,6 +89,8 @@ const ContactForm = () => {
         })
     }
 
+    const submitIndicatorClass = (!editing && !loading) ? (anyFieldIsInvalid() || resError) ? " contact-form__submit-indicator-invalid" :  " contact-form__submit-indicator-valid" : ''
+
     return (
         <form className="contact-form" onSubmit={handleSubmit}>
             <FormTextField
@@ -122,11 +124,13 @@ const ContactForm = () => {
                 onTextAreaChange={handleInput}
                 disabled={loading}
             />
-            {(!loading && !editing) &&
-                <div className={"contact-form__submit-indicator"+((anyFieldIsInvalid() || resError) ? " contact-form__submit-indicator-invalid" : "")}>
-                    {anyFieldIsInvalid() ? SUBMIT_ERROR_MESSAGE : (resError ? RES_ERROR_MESSAGE : SUBMIT_SUCCESS_MESSAGE)}
-                </div>
-            }
+            <div
+            className={"contact-form__submit-indicator"+submitIndicatorClass}
+            role="alert"
+            aria-atomic="true"
+            >
+                {(!loading && !editing) ? anyFieldIsInvalid() ? SUBMIT_ERROR_MESSAGE : (resError ? RES_ERROR_MESSAGE :  SUBMIT_SUCCESS_MESSAGE) : ''}
+            </div>
             <Button disabled={loading || anyFieldIsInvalid()} ariaLabel="Submit Contact Form" className="contact-form__submit" >{<>Submit</>}</Button>
         </form>
     )
