@@ -15,14 +15,12 @@ export default function PostTemplate({ data, children }) {
   return (
     <>
         <Layout>
-            <Header />
             <Hero title={data.mdx.frontmatter.title} subtitle={data.mdx.frontmatter.tagline} />
-                <MDXProvider components={shortcodes}>
-                    <Content>
-                        {children}
-                    </Content>
-                </MDXProvider>
-            <Footer />
+            <MDXProvider components={shortcodes}>
+                <Content>
+                    {children}
+                </Content>
+            </MDXProvider>
         </Layout>
     </>
   )
