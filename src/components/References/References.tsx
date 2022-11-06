@@ -6,6 +6,7 @@ import './styles.css'
 const References = () => {
     return (
         <Section
+            id="references"
             title={"References"}
             flair={
                 <SVGIcon name="thumb" className="section__flair-icon" />

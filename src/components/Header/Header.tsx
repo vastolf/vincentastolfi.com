@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'gatsby'
 import Navigation from '../Navigation/Navigation'
 import './styles.css'
+import SkipToMain from '../SkipToMain/SkipToMain'
 
 const Header = () => {
     const [pageYOffset, setPageYOffset] = useState<number>(0)
@@ -19,10 +20,13 @@ const Header = () => {
     }, [])
     
     return (
-        <header className="header" style={{background: "rgb(25 25 25 / " + (pageYOffset >= maxOpacity ? maxOpacity : pageYOffset) + "%)"}}>
-            <Link to="/" className="header__heading">{((pageYOffset == 0 || pageYOffset < maxOpacity) ? "VA" : "Vincent Astolfi")}</Link>
-            <Navigation />
-        </header>
+        <>
+            <SkipToMain />
+            <header className="header" style={{background: "rgb(25 25 25 / " + (pageYOffset >= maxOpacity ? maxOpacity : pageYOffset) + "%)"}}>
+                <Link to="/" className="header__heading">{((pageYOffset == 0 || pageYOffset < maxOpacity) ? "VA" : "Vincent Astolfi")}</Link>
+                <Navigation />
+            </header>
+        </>
     )
 }
 

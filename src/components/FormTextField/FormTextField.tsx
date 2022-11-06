@@ -40,6 +40,7 @@ const FormTextField = (props: FormTextFieldProps) => {
                     required={required}
                     onChange={onTextInputChange}
                     disabled={disabled}
+                    aria-invalid={!valid}
                 />
             }
             {type == "textarea" &&
@@ -51,6 +52,7 @@ const FormTextField = (props: FormTextFieldProps) => {
                     value={value}
                     onChange={onTextAreaChange}
                     disabled={disabled}
+                    aria-invalid={!valid}
                 >
                 </textarea>
             }

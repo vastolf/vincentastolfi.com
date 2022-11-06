@@ -32,8 +32,6 @@ const contact = async (req: GatsbyFunctionRequest<ContactFormValuesProps>, res: 
     // Otherwise, we're going to send the email
     response.sent = await sendMail({name: body?.name?.value, email: body?.email?.value, message: body?.message?.value})
 
-    console.log(response?.sent)
-
     // Then send the response
     res.status(200).json(response)
 };

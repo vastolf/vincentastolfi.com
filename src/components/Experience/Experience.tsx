@@ -6,6 +6,7 @@ import './styles.css'
 const Experience = () => {
     return (
         <Section
+            id={"experience"}
             title={"Experience"}
             flair={
                 <SVGIcon name="award" className="section__flair-icon" />

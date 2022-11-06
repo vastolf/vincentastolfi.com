@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import CDNImage from '../CDNImage/CDNImage';
 const { vYG, generateStarsBoxShadowsString } = require('../../utils/starUtils');
 import './styles.css'
 
@@ -61,7 +62,7 @@ const StarField = (props: {containerHeight: number, settings? : StarFieldSetting
                             <div className="star-field__clone" style={{top : `${containerHeight}px`}}></div>
                         </div>
                     })}
-                    <img className="star-field__egg" src="/me.png" alt={vYG(100, true)} />
+                    <CDNImage className="star-field__egg" src="/me.png" alt={vYG(100, true)} width="1" height="1"/>
                 </div>
             }
         </>
