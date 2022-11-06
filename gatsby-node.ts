@@ -9,6 +9,7 @@ type NodePost = {
         tagline: string
         slug: string
         background: string
+        date: string
     }
     internal: {
         contentFilePath: string
@@ -34,6 +35,7 @@ export const createPages : GatsbyNode["createPages"] = async ({ graphql, actions
             tagline
             slug
             background
+            date
           }
           internal {
             contentFilePath

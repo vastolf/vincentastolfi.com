@@ -1,17 +1,15 @@
 import React from "react"
+import type { HeadFC } from "gatsby"
 import { graphql } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import { Link } from "gatsby"
 import Layout from "../components/Layout/Layout"
-import Header from "../components/Header/Header"
-import Footer from "../components/Footer/Footer"
 import Hero from "../components/Hero/Hero"
 import Content from "../components/Content/Content"
 
 const shortcodes = { Link } // Provide common components here
 
 export default function PostTemplate({ data, children }) {
-    console.log(data.mdx.frontmatter)
   return (
     <>
         <Layout>
@@ -26,6 +24,13 @@ export default function PostTemplate({ data, children }) {
   )
 }
 
+export const Head: HeadFC = ({data}) => (
+  <>
+    <title>Vincent Astolfi - {data?.mdx?.frontmatter?.title}</title>
+    <meta name="description" content={data?.mdx?.frontmatter?.tagline}></meta>
+  </>
+);
+
 export const query = graphql`
   query($id: String!) {
     mdx(id: { eq: $id }) {
@@ -34,6 +39,7 @@ export const query = graphql`
         tagline
         slug
         background
+        date
       }
     }
   }
