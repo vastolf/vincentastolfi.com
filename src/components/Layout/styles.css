@@ -4,6 +4,31 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",sans-serif;
 }
 
+ul {
+    margin: 0;
+    list-style: none;
+    padding: 0 0 0 1.5rem;
+}
+
+li {
+    font-size: 18px;
+    padding-bottom: 0.75rem;
+    position: relative;
+    line-height: 32px;
+}
+
+li::before {
+    content: '';
+    position: absolute;
+    top: 11px;
+    left: -1.25rem;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid #EF6F6C;
+}
+
 a {
     color: #73628A;
 }

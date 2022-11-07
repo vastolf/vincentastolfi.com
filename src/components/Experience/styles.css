@@ -22,31 +22,3 @@
     font-size: 18px;
     margin-bottom: 1.5rem;
 }
-
-.experience__list {
-    list-style: none;
-    padding: 0 0 0 1.5rem;
-}
-
-#freelancer.experience__list {
-    margin: 0;
-}
-
-.experience__list li {
-    font-size: 18px;
-    padding-bottom: 0.75rem;
-    position: relative;
-    line-height: 32px;
-}
-
-.experience__list li::before {
-    content: '';
-    position: absolute;
-    top: 11px;
-    left: -1.25rem;
-    width: 0;
-    height: 0;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-left: 5px solid #EF6F6C;
-}
