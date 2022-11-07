@@ -39,6 +39,12 @@ const CodeBlock = (props: { children: string, className: string }) => {
             </div>
             <button className="code-block__expand-toggle" onClick={handleExpandToggle}>
               <span>{expanded ? "Close" : "Expand"}</span>
+              {expanded &&
+                <SVGIcon className="code-block__expand-icon" name={"close"} />
+              }
+              {!expanded &&
+                <SVGIcon className="code-block__expand-icon" name={"code"} />
+              }
             </button>
           </div>
           <Highlight {...defaultProps}

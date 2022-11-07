@@ -61,6 +61,16 @@
     border-radius: 0;
     text-transform: none;
     box-shadow: none;
+    display: flex;
+    align-items: center;
+    padding-bottom: 1px;
+}
+
+.code-block__expand-icon {
+    fill: #fff;
+    width: 18px;
+    height: 18px;
+    margin-left: .25rem;
 }
 
 .code-block__expand-toggle:hover,
