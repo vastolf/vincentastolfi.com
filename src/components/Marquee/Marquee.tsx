@@ -34,8 +34,8 @@ const Marquee = () => {
                     <h1 className="marquee__heading">Vincent Astolfi</h1>
                     <div className="marquee__description">Full Stack Developer, 10+ Years Industry Experience</div>
                     <div className="marquee__icons-wrapper">
-                        <SVGIcon name="html5" className="marquee__icon" />
-                        <SVGIcon name="css3" className="marquee__icon" />
+                        <SVGIcon name="html" className="marquee__icon" />
+                        <SVGIcon name="css" className="marquee__icon" />
                         <SVGIcon name="nodejs" className="marquee__icon" />
                         <SVGIcon name="reactjs" className="marquee__icon" />
                         <SVGIcon name="drupal" className="marquee__icon" />

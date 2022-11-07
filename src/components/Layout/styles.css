@@ -2,22 +2,23 @@ body {
     background: #eee;
     color: #222;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",sans-serif;
+    position: relative;
 }
 
-ul {
+.layout ul {
     margin: 0;
     list-style: none;
     padding: 0 0 0 1.5rem;
 }
 
-li {
+.layout li {
     font-size: 18px;
     padding-bottom: 0.75rem;
     position: relative;
     line-height: 32px;
 }
 
-li::before {
+.layout li::before {
     content: '';
     position: absolute;
     top: 11px;

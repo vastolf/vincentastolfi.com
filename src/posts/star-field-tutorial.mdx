@@ -9,6 +9,9 @@ date: 05/11/2022
 In this tutorial you'll learn how to make a simple, infinitely looping star field effect using 
 TypeScript and CSS. I personally use this effect throughout my site to add a bit of visual flair.
 
+It mainly utilizes box-shadows to create stars, and as you'll see in this tutorial, the *box-shadow*
+property can be an extremely powerful tool when creating repeating or random patterns.
+
 The requirements we want to meet with this effect are:
 - Ability to include our component in nearly any container, and have the star field loop in the background
 - Have varying sizes of stars, as well as color & speed variations
@@ -17,30 +20,41 @@ The requirements we want to meet with this effect are:
 ## Helper Functions
 
 We'll begin by setting up some helper functions that we'll use to deal with random generations of numbers,
-stars, and the colors for the stars:
+stars, and the colors for the stars. Create a file called **starUtils.ts** and implement the following functions:
 
 ```typescript
-// Used for generating random Integers between 0 & a max value (inclusive)
+/* starUtils.ts */
+
+/* Generates & returns random Integers between 0 & a max value (inclusive) */
 const randomMaxIntInclusive = (max: number) : number => {
-    return Math.round(Math.random() * max);
+    return Math.round(Math.random() * max)
 }
 
-// Introduces even more variability by giving bright stars random different colors
+/* Returns a random color out of a pre-defined list */
 const getRandomBrightColor = () : String => {
     const brightColors : Array<String> = ["#c8c8c8", "#b9b398", "#b7948c"]
-    return brightColors[randomMaxIntInclusive(brightColors.length - 1)];
+    return brightColors[randomMaxIntInclusive(brightColors.length - 1)]
 }
 
-// x = x coord of box shadow, y = y coord, makeBright = whether or not we should make this star "bright" by setting its
-// color to white; because we randomly set makeBright to true based on a percentage chance, this introduces more variability
-// in the stars
-// returns something like "508px 341px," or "437px 871px #c8c8c8," depending on if makeBright is true or not
+/**
+ * @param {number} x - x coordinate of box shadow
+ * @param {number} y - y coordinate of box shadow
+ * @param {boolean} makeBright - whether to make the individual star "bright"
+ * 
+ * @returns - something like `508px 341px,` or `437px 871px #c8c8c8,` if makeBright is true
+ */
 const getSingleBoxShadowString = (x: number, y: number, makeBright: boolean) : string => {
-    return x + 'px ' + y + 'px' + (makeBright ? ' ' + getRandomBrightColor() + ',' : ',');
+    return x + 'px ' + y + 'px' + (makeBright ? ' ' + getRandomBrightColor() + ',' : ',')
 }
 
-// Generates the full boxShadows string that we'll put inline on the star divs; ouputs something like "500px 500px, 319px 740px, ..."
-// Sometimes it will include a color in the string if we're making the star (box shadow) brighter
+/**
+ * @param {number} containerHeight - height of parent container
+ * @param {number} containerWidth - width of parent container
+ * @param {number} stars - the number of stars we should generate
+ * @param {number} brightPercentage - the percentage chance that any given star should be made "brighter" than its peers; should be an integer 1 - 100.
+ * 
+ * @returns - A string, composed of box shadows values, which will effectively be our "stars"
+*/
 const generateStarsBoxShadowsString = (
         containerHeight: number,
         containerWidth: number,
@@ -48,7 +62,7 @@ const generateStarsBoxShadowsString = (
         brightPercentage: number
     ) : string => {
     // instantiate an empty string, which we will append to when adding the box shadows (stars)
-    let boxShadowString = '';
+    let boxShadowString = ''
     // Generate Stars using Box Shadows between containerWidth and containerHeight
     for (let i = 0; i < stars; i++) {
         boxShadowString += getSingleBoxShadowString(
@@ -59,33 +73,248 @@ const generateStarsBoxShadowsString = (
             // Random boolean based on brightPercentage (helps introduce vairability in brightness between stars of a size)
             // This works by generating a random # between 0 - 100, and checking if brightPercentage is greater; in this way
             // we can randomly (in a psuedo-random way) assign certain stars to be "brighter" at a rate we define 
-            (randomMaxIntInclusive(100) < brightPercentage ? true : false)
+            (randomMaxIntInclusive(100) < brightPercentage)
         );
     }
     // Remove the last comma & return; this is probably better than checking if stars - 1 = i every time we want to add a comma
-    return boxShadowString.slice(0, -1);
+    return boxShadowString.slice(0, -1)
+}
+
+// Export generateStarsBoxShadowsString; this will be the only function we need direct access to
+module.exports.generateStarsBoxShadowsString = generateStarsBoxShadowsString
+```
+
+## Main StarField Component
+
+Now that we've got our helper functions ready to go, let's go ahead and set up a component. For this we'll want to:
+- Create a new component at **/components/StarField/StarField.tsx**
+- Add an empty stylesheet at **/components/StarField/styles.css**
+
+Then inside of our **StarField.tsx** file, we want to implement the following:
+
+```tsx
+/* StarField.tsx */
+
+import React from 'react'
+const { generateStarsBoxShadowsString } = require('../../utils/starUtils');
+import './styles.css'
+
+// We only use these types here so we'll instantiate them directly in the template
+type StarFieldSettingsSizeProps = {
+    stars: number,
+    brightPercentage: number,
+    dimensions?: string,
+    duration?: number
+}
+
+type StarFieldSettingsSizeKeysProps = {
+    [key : string]: StarFieldSettingsSizeProps;
+};
+
+// Thanks to Michael Becker for the inspiration for this StarField effect: https://codepen.io/mindsculpt/pen/JJWEJE
+const StarField = (props: {containerHeight: number, containerWidth: number, settings: StarFieldSettingsSizeKeysProps}) => {
+    const { containerHeight = 0, containerWidth = 0, settings = defaultSettings } = props;
+    
+    return (
+        <>
+        // we only want to render this if the container's width is bigger than 0px; we'll see why
+        // this is important in the next step
+        {(containerWidth > 0) &&
+            <div className="star-field">
+                {Object.keys(settings).map((size : string) => {
+                    // There will be one of these divs for each of our sizes (small, medium, large)
+                    // it gets a className of star-field__SIZE, and we generate box shadows strings
+                    // for each size, depending on that size's settings
+                    return <div
+                        key={size}
+                        className={'star-field__'+size}
+                        style={{
+                            // boxShadows for this size
+                            boxShadow : generateStarsBoxShadowsString(
+                                containerHeight,
+                                windowWidth,
+                                settings[size]?.stars,
+                                settings[size]?.brightPercentage
+                            ),
+                            // We must translate the div up by its container height
+                            transform : `translateY(-${containerHeight}px)`,
+                            // Whatever animation duration was set for this size
+                            animationDuration: `${settings[size]?.duration}s`,
+                            // The width of this size of star (for best results, use 1-3px)
+                            width: settings[size]?.dimensions,
+                            // The height of this size of star (fox best results, use 1-3px)
+                            height: settings[size]?.dimensions
+                        }}
+                    >
+                        // finally, we add a "clone" div which will allow us to make a seamless
+                        // transition. Its top attribute it offset by the container height
+                        <div className="star-field__clone" style={{top : `${containerHeight}px`}}></div>
+                    </div>
+                })}
+            </div>
+        }
+        </>
+    )
+}
+
+export default StarField
+```
+Whoa! There's a lot going on there. Let's break down what we're doing. We create a wrapper div with a className
+of **.star-field**. Inside of the **.star-field**, we generate a div for each of the sizes small, medium, and large.
+
+Then we generate the box shadow string for this star size using our helper function **generateStarsBoxShadowsString**.
+We also translate the div on it's vertical axis, 100% of its container's height, and set an animation duration for
+each size's star effect (we want to have different speeds for different star sizes).
+
+The width and height properties must also be set, which control the size of our stars (box shadows will take on the 
+height and width of the element).
+
+Before we can implement our star field, we'll need to include the CSS that makes the rest of the magic happen.
+In your blank **styles.css** file in the StarField component, implement the following styles:
+
+```css
+/* styles.css */
+
+.star-field {
+    animation: fadeInAnimation 3s;
+    overflow: hidden;
+}
+
+/* By blurring these elements, we make square pixels from box-shadows look like stars; opacity is optional */
+.star-field__small,
+.star-field__medium,
+.star-field__large {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    color: #a7cfff;
+    filter: blur(1px);
+    opacity: .75;
+    animation-name: starFieldAnimation;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/*
+By inheriting the box shadows, we don't need to repeat the CSS for the box shadows twice per start-field__size
+We translate this "clone" up 450px, the height of the container (marquee) so that when the animation starts over, the
+Transition is seamless
+*/
+.star-field__clone {
+    box-shadow: inherit;
+    position: relative;
+    height: 100%;
+}
+
+@keyframes fadeInAnimation {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes starFieldAnimation {
+    100% {
+        transform: translateY(0px);
+    }
 }
 ```
 
-The only function we actually need to export directly is
+## Implementation Example
 
-Trying out MDX. This MDX will end up in a p tag.
+That's it! Our component is ready to be included throughout our project. Let's make another component that we
+can call our StarField component inside of so we can test it out:
 
-This will end up in its own p tag. [here's a link](https://google.com/)
+```tsx
+/* TestContainer.tsx */
 
-Here is `one line code`
+import React, { useState, useRef } from 'react'
+import StarField from '../StarField/StarField'
 
-```typescript
-# https://highlightjs.org/
-Here's a code block
+const TestContainer = () => {
+    
+    return (
+        <div className="test-container" style={{
+                position: "relative",
+                overflow: "hidden",
+                height: "200px", 
+                width: "300px",
+                margin: "0 auto"
+            }}
+        >
+            <StarField
+                containerHeight={200}
+                containerWidth={300}
+                settings={{
+                    'small': { stars: 150, brightPercentage: 25, dimensions: "1px", duration: 180 },
+                    'medium': { stars: 100, brightPercentage: 15, dimensions: "2px", duration: 135 },
+                    'large': { stars: 50, brightPercentage: 2, dimensions: "3px", duration: 90 }
+                }}
+            />
+            <div className="test-component" style={{
+                background: "black",
+                color: "white",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+            }}>
+                <span>Pretty Star Field</span>
+            </div>
+        </div>
+    )
+}
 ```
 
-# Heading 1
+Note that the container **MUST** have *position: relative*, and *overflow: hidden* is likely 
+necessary, or the effect will not work & stars will appear outside their container.
 
-## Heading 2
+If you want to dynamically get the component's width/height, you 
+[can do so using useRef](https://bobbyhadz.com/blog/react-get-element-width-ref).
+Let's see how it turns out on the front end:
 
-### Heading 3
+<br />
+<div className="test-container" style={{
+        position: "relative",
+        overflow: "hidden",
+        height: "200px", 
+        width: "300px",
+        margin: "0 auto"
+    }}
+>
+    <StarField
+        containerHeight={200}
+        containerWidth={300}
+        settings={{
+            'small': { stars: 150, brightPercentage: 25, dimensions: "1px", duration: 180 },
+            'medium': { stars: 100, brightPercentage: 15, dimensions: "2px", duration: 135 },
+            'large': { stars: 50, brightPercentage: 2, dimensions: "3px", duration: 90 }
+        }}
+    />
+    <div className="test-component" style={{
+        background: "black",
+        color: "white",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100%",
+        width: "100%"
+    }}>
+        <span>Pretty Star Field</span>
+    </div>
+</div>
+<br />
 
-#### Heading 4
+## Conclusion
 
-##### Heading 5
+Our effect is looking great! We can improve the effect by:
+- Set more/less **stars** for a size (I think using more small stars looks the most natural)
+- Changing the **brightPercentage** for a size (Naturally, smaller stars would be less likely to be bright
+but I've chosen to make smaller stars have a higher chance of being bright)
+- Changing the **dimensions** for a size (Anything larger than 5px starts to look a bit weird if you don't
+mess around with the opacity / blur)
+- Changing the **duration** to make your stars of different sizes go faster or slower
+- Adding a background image to our container
+- Adding more color variations to the **getRandomBrightColor** function
+
+You can see the effect in it's full glory <Link to="/">on my homepage hero</Link>. Hope you enjoyed this
+tutorial and learned something along the way!

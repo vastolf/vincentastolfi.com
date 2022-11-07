@@ -6,15 +6,22 @@ import { Link } from "gatsby"
 import Layout from "../components/Layout/Layout"
 import Hero from "../components/Hero/Hero"
 import Content from "../components/Content/Content"
+import CodeBlock from "../components/CodeBlock/CodeBlock"
+import StarField from "../components/StarField/StarField"
 
-const shortcodes = { Link } // Provide common components here
+const components = {
+  pre: (props: JSX.IntrinsicAttributes & React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement>) => <div {...props} />,
+  code: CodeBlock,
+  Link,
+  StarField
+}
 
 export default function PostTemplate({ data, children }) {
   return (
     <>
         <Layout>
             <Hero title={data.mdx.frontmatter.title} subtitle={data.mdx.frontmatter.tagline} />
-            <MDXProvider components={shortcodes}>
+            <MDXProvider components={components}>
                 <Content>
                     {children}
                 </Content>
