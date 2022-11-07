@@ -50,8 +50,7 @@ const ContactForm = () => {
     }
 
     const anyFieldIsInvalid = () : boolean => {
-        if (!formValues?.name?.valid || !formValues?.email?.valid || !formValues?.message?.valid) return true;
-        return false;
+        return (!formValues?.name?.valid || !formValues?.email?.valid || !formValues?.message?.valid)
     }
 
     const handleSubmit = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {

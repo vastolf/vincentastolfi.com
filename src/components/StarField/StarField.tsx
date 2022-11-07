@@ -62,7 +62,7 @@ const StarField = (props: {containerHeight: number, settings? : StarFieldSetting
                             <div className="star-field__clone" style={{top : `${containerHeight}px`}}></div>
                         </div>
                     })}
-                    <CDNImage className="star-field__egg" src="/me.png" alt={vYG(100, true)} width="1" height="1"/>
+                    <CDNImage className="star-field__egg" src="/me.png" alt={vYG()} width="1" height="1"/>
                 </div>
             }
         </>

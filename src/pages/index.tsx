@@ -24,7 +24,12 @@ export default IndexPage
 export const Head: HeadFC = () => (
   <>
     <title>Vincent Astolfi - Resume</title>
-    <meta name="description" content="A developer resume site for Vincent Astolfi. View my work history & skillset, or get in contact with me."></meta>
+    <meta name="description" content="A developer resume site for Vincent Astolfi. View my work history & skillset, or get in contact with me." />
+    <meta property="og:title" content="Vincent Astolfi - Resume" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="A developer resume site for Vincent Astolfi. View my work history & skillset, or get in contact with me." />
+    <meta property="og:image" content="https://vincentastolfi.com/moon.jpg" />
+    <meta property="og:url" content="http://vincentastolfi.com" />
   </>
 );
 
