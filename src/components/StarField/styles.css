@@ -32,8 +32,9 @@ Transition is seamless
 .star-field__egg {
     position: absolute;
     width: 1px;
-    animation: starFieldAnimation 45s linear infinite;
+    animation: eggAnim 45s linear infinite;
     left: 200px;
+    top: -30px;
 }
 
 @keyframes fadeInAnimation {
@@ -48,9 +49,6 @@ Transition is seamless
 }
 
 @keyframes eggAnim {
-    0% {
-        top: -30px
-    }
     100% {
         top: 110%;
     }
