@@ -31,7 +31,7 @@ const CodeBlock = (props: { children: string, className: string }) => {
 
     return (
       <div className={`code-block__wrapper code-block__wrapper-${language}` + (expanded ? ' code-block__wrapper-expanded' : '')}>
-        <div className={'code-block' + (expanded ? ' code-block__expanded' : '')} ref={codeBlockRef}>
+        <div className={'code-block'} ref={codeBlockRef}>
           <div className="code-block__header">
             <div className="code-block__lang">
               <SVGIcon className="code-block__lang-icon" name={language} />

@@ -1,5 +1,5 @@
 .code-block__wrapper {
-    margin-bottom: 1.5rem;
+    margin: 2rem 0;
 }
 
 .code-block__wrapper-expanded {
@@ -10,7 +10,7 @@
     left: 0;
     background: rgba(25, 25, 25, 0.85);
     z-index: 999;
-    margin-bottom: 0;
+    margin: 0;
 }
 
 .code-block {
@@ -80,14 +80,19 @@
     border-bottom: 1px dotted;
 }
 
-.code-block pre {
+.code-block .prism-code {
     padding: 1rem 1rem 0;
     overflow: scroll;
     border-radius: 0 0 2px 2px;
     margin: 0;
+    max-height: 320px;
 }
 
-.code-block__expanded {
+.code-block__wrapper-expanded .code-block .prism-code {
+    max-height: none;
+}
+
+.code-block__wrapper-expanded .code-block {
     position: fixed;
     z-index: 999;
     overflow: scroll;
@@ -96,14 +101,24 @@
     top: 3rem;
     left: 0;
     right: 0;
+    border-radius: 2px;
 }
 
 @media screen and (min-width: 650px) {
-    .code-block__expanded {
+    .code-block__wrapper-expanded .code-block {
         position: fixed;
         top: 3rem;
         height: calc(100vh - 9rem);
         width: calc(100vw - 6rem);
         margin: 3rem auto;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .code-block__wrapper {
+        margin: 3rem -4rem;
+    }
+    .code-block pre {
+        max-height: 500px;
     }
 }
