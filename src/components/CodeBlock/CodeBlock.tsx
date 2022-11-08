@@ -1,75 +1,48 @@
 import React, { useState, useRef, useEffect } from 'react'
-import Highlight, { defaultProps } from 'prism-react-renderer'
-import vsDark from 'prism-react-renderer/themes/vsDark';
+import PopContainer from '../PopContainer/PopContainer';
+import CodeHighlight from '../CodeHighlight/CodeHighlight';
 import SVGIcon from '../SVGIcon/SVGIcon';
+import { Language } from 'prism-react-renderer'
 import './styles.css'
 
 const CodeBlock = (props: { children: string, className: string }) => {
     const {children, className} = props
-    const codeBlockRef = useRef<HTMLDivElement>(null)
     const [expanded, setExpanded] = useState<boolean>(false)
+    const [copied, setCopied] = useState<boolean>(false)
     const language = className?.replace(/language-/, '') || ""
 
-    const handleExpandToggle = () => {
-      setExpanded(!expanded)
-    }
-
-    const handleClickOutside = (event: Event) => {
-      if (!codeBlockRef?.current?.contains(event.target as Node)) {
-        setExpanded(false)
+    const handleCopy = async () : Promise<void> => {
+      setCopied(true)
+      try {
+        await navigator.clipboard.writeText(children);
+      } catch (err) {
+        setCopied(false)
       }
+      setTimeout(() : void => {
+        setCopied(false)
+      }, 2500)
     }
-
-    useEffect(() => {
-      document.addEventListener("click", handleClickOutside, false)
-      document.addEventListener("focusout", handleClickOutside, false)
-      return () => {
-        document.removeEventListener("click", handleClickOutside, false)
-        document.removeEventListener("focusout", handleClickOutside, false)
-      };
-    }, []);
 
     return (
-      <div className={`code-block__wrapper code-block__wrapper-${language}` + (expanded ? ' code-block__wrapper-expanded' : '')}>
-        <div className={'code-block'} ref={codeBlockRef}>
+      <PopContainer expanded={expanded} setExpanded={setExpanded}>
+        <div className={`code-block code-block__language-${language}${expanded ? ' code-block__expanded' : ''}`}>
           <div className="code-block__header">
             <div className="code-block__lang">
               <SVGIcon className="code-block__lang-icon" name={language} />
               <span>{language}</span>
             </div>
-            <button className="code-block__expand-toggle" onClick={handleExpandToggle}>
+            <button className="code-block__button" onClick={() => setExpanded(!expanded)}>
               <span>{expanded ? "Close" : "Expand"}</span>
-              {expanded &&
-                <SVGIcon className="code-block__expand-icon" name={"close"} />
-              }
-              {!expanded &&
-                <SVGIcon className="code-block__expand-icon" name={"code"} />
-              }
+              <SVGIcon className="code-block__button-icon" name={expanded ? "close" : "code"} />
+            </button>
+            <button className="code-block__copy" onClick={handleCopy}>
+              <SVGIcon className="code-block__copy-icon" name={copied ? 'check' : 'copy'} />
+              <span>{copied ? 'Copied!' : 'Copy'}</span>
             </button>
           </div>
-          <Highlight {...defaultProps}
-              code={children}
-              language={language}
-              theme={vsDark}
-          >
-            {({ className, style, tokens, getLineProps, getTokenProps }) => (
-              <pre className={className} style={{ ...style }}>
-                {tokens.map((line, index) => {
-                  const lineProps = getLineProps({ line, key: index })
-                  return (
-                    <div key={index} {...lineProps}>
-                      {line.map((token, key) => (
-                        <span key={key}{...getTokenProps({ token, key })} />
-                      ))}
-                    </div>
-                  )
-                }
-                )}
-              </pre>
-            )}
-          </Highlight>
+          <CodeHighlight code={children} language={language} />
         </div>
-      </div>
+      </PopContainer>
     )
 }
 

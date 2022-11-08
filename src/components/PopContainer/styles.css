@@ -1,0 +1,30 @@
+.pop-container__wrapper {
+    margin: 2rem 0;
+}
+
+.pop-container__wrapper-expanded {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(25, 25, 25, 0.85);
+    z-index: 999;
+    margin: 0;
+}
+
+@media screen and (min-width: 650px) {
+    .pop-container__wrapper-expanded .code-block {
+        position: fixed;
+        top: 3rem;
+        height: calc(100vh - 9rem);
+        width: calc(100vw - 6rem);
+        margin: 3rem auto;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .pop-container__wrapper {
+        margin: 3rem -4rem;
+    }
+}

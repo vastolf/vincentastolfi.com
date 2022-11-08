@@ -9,14 +9,13 @@ import Content from "../components/Content/Content"
 import CodeBlock from "../components/CodeBlock/CodeBlock"
 import StarField from "../components/StarField/StarField"
 
-const components = {
-  pre: (props: JSX.IntrinsicAttributes & React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement>) => <div {...props} />,
-  code: CodeBlock,
-  Link,
-  StarField
-}
-
 export default function PostTemplate({ data, children }) {
+  const components  = {
+    pre: (props: JSX.IntrinsicAttributes & React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement>) => <div {...props} />,
+    code: CodeBlock,
+    Link,
+    StarField
+  }
   return (
     <>
         <Layout>
