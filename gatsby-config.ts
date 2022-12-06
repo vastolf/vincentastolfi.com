@@ -11,11 +11,13 @@ const config: GatsbyConfig = {
   graphqlTypegen: true,
   plugins: [
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: "gatsby-plugin-google-tagmanager",
       options: {
-        trackingId: process?.env?.GATSBY_GA_TRACKING_ID,
-        defer: true
-      }
+        id: process?.env?.GATSBY_GA_TRACKING_ID,
+        includeInDevelopment: true,
+        defaultDataLayer: { platform: "gatsby" },
+        enableWebVitalsTracking: true,
+      },
     },
     {
       resolve: `gatsby-plugin-gatsby-cloud`,
