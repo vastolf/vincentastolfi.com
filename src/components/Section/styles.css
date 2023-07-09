@@ -96,7 +96,7 @@
 
     .section__flair-wrapper-sticky {
         position: sticky;
-        top: 0;
+        top: 5rem;
     }
 
     .section__title {
