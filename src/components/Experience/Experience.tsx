@@ -11,6 +11,7 @@ const Experience = () => {
             flair={
                 <SVGIcon name="award" className="section__flair-icon" />
             }
+            sticky={true}
         >
             <div className="experience__item">
                 <h3 className="experience__title">Senior Developer, <a href="https://desarol.com/" target="_blank">Desarol LLC</a></h3>
