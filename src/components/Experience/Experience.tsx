@@ -43,8 +43,8 @@ const Experience = () => {
                     <li>NodeJS, Express, React/React Native, utilizing frameworks such as Gatsby and NextJS for the front end</li>
                     <li>TypeScript / Statically Typed Javascript</li>
                     <li>Ubuntu Server management and maintainence, Shell Scripting, NGINX/Apache, Serverless Functions / Deployment</li>
-                    <li>GraphQL, MYSQL, MongoDB, SQLite, Firebase</li>
-                    <li>Java, Python, PHP</li>
+                    <li>GraphQL, MYSQL, Postgres, MongoDB, SQLite, Firebase</li>
+                    <li>Ruby, Java, Python, PHP</li>
                     <li>Backend CMS such as WordPress, Drupal, Contentful</li>
                     <li>Google Analytics / Tag Manager (I have an Advanced certificate from Google Analytics Academy), Google Optimize</li>
                 </ul>
