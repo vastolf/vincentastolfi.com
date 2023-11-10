@@ -16,4 +16,3 @@ This was an adaptation of [Michael Becker's StarField effect](https://codepen.io
 - It allows the star field effect to be more easily limited to the actual height/width of its container (mine will not generate stars outside of the width of the container, unlike the original implementation)
 - Randomly chooses some stars to be brighter / different colors, which increases variability between the stars substantially
 - Allows you to more easily control the number of each size of star / the percentage of those that will be "bright"
-
