@@ -23,7 +23,7 @@ const Marquee = () => {
         <section className="marquee" >
             <div className="marquee__background-wrapper">
                 <div className="marquee__background">
-                    <CDNImage className="marquee__background-image" alt="" src="/moon.jpg" width="1280" height="800" />
+                    <CDNImage className="marquee__background-image" alt="" src="/moon.png" width="500" height="500" />
                 </div>
                 {(marqueeContentHeight) > 0 &&
                     <StarField containerHeight={marqueeContentHeight} />
