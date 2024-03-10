@@ -38,6 +38,11 @@ Transition is seamless
     left: 200px;
 }
 
+@keyframes fadeInAnimation {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
 @keyframes starFieldAnimation {
     100% {
         transform: translateY(0px);
