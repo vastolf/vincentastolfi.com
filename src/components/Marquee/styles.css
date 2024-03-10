@@ -20,6 +20,9 @@
     align-items: center;
     justify-content: center;
     z-index: 1;
+    animation-timing-function: ease-in-out;
+    animation-name: fadeInAnimation;
+    animation-duration: 1s;
 }
 
 .marquee__background-image {
@@ -31,9 +34,6 @@
     top: 0;
     bottom: 0;
     margin: auto;
-    animation-timing-function: ease-in-out;
-    animation-name: fadeInAnimation;
-    animation-duration: 1s;
 }
 
 .marquee__content {
