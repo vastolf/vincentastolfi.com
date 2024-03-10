@@ -20,6 +20,7 @@
     align-items: center;
     justify-content: center;
     z-index: 1;
+    filter: brightness(40%);
 }
 
 .marquee__background-image {
@@ -30,7 +31,6 @@
     top: 0;
     bottom: 0;
     margin: auto;
-    filter: brightness(40%);
 }
 
 .marquee__content {
