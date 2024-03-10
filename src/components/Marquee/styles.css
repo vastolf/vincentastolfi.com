@@ -30,6 +30,7 @@
     top: 0;
     bottom: 0;
     margin: auto;
+    filter: brightness(40%);
 }
 
 .marquee__content {
