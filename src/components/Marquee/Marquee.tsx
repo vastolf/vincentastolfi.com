@@ -3,6 +3,7 @@ import CDNImage from '../CDNImage/CDNImage'
 import StarField from '../StarField/StarField'
 import SVGIcon from '../SVGIcon/SVGIcon'
 import './styles.css'
+import { calculateYearsSince } from '../../utils/time'
 
 const Marquee: React.FC = () => {
     const marqueeContentRef = useRef<HTMLDivElement>(null);
@@ -32,7 +33,7 @@ const Marquee: React.FC = () => {
             <div className="marquee__content" ref={marqueeContentRef}>
                 <div className="marquee__content-interior">
                     <h1 className="marquee__heading">Vincent Astolfi</h1>
-                    <div className="marquee__description">Full Stack Developer, 10+ Years Industry Experience</div>
+                    <div className="marquee__description">Full Stack Developer, {calculateYearsSince("01/01/2014")}+ Years Industry Experience</div>
                     <div className="marquee__icons-wrapper">
                         <SVGIcon name="html5" className="marquee__icon" />
                         <SVGIcon name="css3" className="marquee__icon" />

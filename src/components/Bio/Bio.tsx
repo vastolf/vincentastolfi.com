@@ -2,21 +2,9 @@ import React from 'react'
 import Section from '../Section/Section'
 import CDNImage from '../CDNImage/CDNImage'
 import './styles.css'
+import { calculateYearsSince } from '../../utils/time'
 
 const Bio: React.FC = () => {
-    
-    const calculateYearsSince = (dateString: string) => {
-        var date = new Date(dateString);
-        // Get month difference 
-        var monthsDiff = Date.now() - date.getTime();
-        // Get difference of monthsDiff as a date object
-        var ageDate = new Date(monthsDiff);
-        // Get year from age
-        var year = ageDate.getUTCFullYear();
-        // Return age
-        return Math.abs(year - 1970);
-    }
-    
     return (
         <Section
             id={"about-me"}
