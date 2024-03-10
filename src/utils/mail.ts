@@ -30,15 +30,15 @@ const sendMail = async (mailDetails: ContactSubmissionEmailProps) : Promise<bool
             <div>${message}</div>
         `,
         replyTo: email
-    };
+    }
     return new Promise<boolean>((resolve) => {
         transport.sendMail(mailOptions, (error: any, info: SentMessageInfo) => {
             if (error) {
                 resolve(false);
             }
             resolve(true);
-        });
-    });
+        })
+    })
 }
 
 export default sendMail;

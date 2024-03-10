@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import StarField from '../StarField/StarField'
 import './styles.css'
 
-const NotFound = () => {
+const NotFound: React.FC = () => {
     const notFoundRef = useRef<HTMLDivElement>(null);
     const [notFoundHeight, setNotFoundHeight] = useState<number>(0)
 

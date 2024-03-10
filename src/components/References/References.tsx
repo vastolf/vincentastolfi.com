@@ -3,7 +3,7 @@ import Section from '../Section/Section'
 import SVGIcon from '../SVGIcon/SVGIcon'
 import './styles.css'
 
-const References = () => {
+const References: React.FC = () => {
     return (
         <Section
             id="references"

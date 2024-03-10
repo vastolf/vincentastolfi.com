@@ -7,7 +7,7 @@ import Experience from "../components/Experience/Experience"
 import References from "../components/References/References"
 import Contact from "../components/Contact/Contact"
 
-const IndexPage = () => {
+const IndexPage: React.FC = () => {
   return (
     <Layout>
         <Marquee />

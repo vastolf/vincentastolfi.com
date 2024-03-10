@@ -3,7 +3,7 @@ import Section from '../Section/Section'
 import CDNImage from '../CDNImage/CDNImage'
 import './styles.css'
 
-const Bio = () => {
+const Bio: React.FC = () => {
     
     const calculateYearsSince = (dateString: string) => {
         var date = new Date(dateString);

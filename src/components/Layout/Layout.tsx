@@ -4,9 +4,12 @@ import './styles.css'
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-const Layout = (props: {children: JSX.Element | JSX.Element[], hideFooter?: boolean}) => {
-    const {children, hideFooter = false} = props;
-    
+interface ILayoutProps {
+    children: React.ReactNode,
+    hideFooter?: boolean
+}
+
+const Layout: React.FC<ILayoutProps> = ({children, hideFooter = false}) => {
     return (
         <>
             <Header />

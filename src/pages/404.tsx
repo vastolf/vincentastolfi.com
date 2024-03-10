@@ -3,7 +3,7 @@ import { HeadFC } from "gatsby"
 import Layout from "../components/Layout/Layout"
 import NotFound from "../components/NotFound/NotFound"
 
-const NotFoundPage = () => {
+const NotFoundPage: React.FC = () => {
   return (
     <Layout hideFooter={true}>
       <NotFound />

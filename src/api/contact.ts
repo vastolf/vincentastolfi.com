@@ -24,9 +24,9 @@ const contact = async (req: GatsbyFunctionRequest<ContactFormValuesProps>, res: 
 
     // If something is invalid, we're going to skip sending the email, setting sent to false and returning
     if (Object.values(response)?.filter((value) => value == false)?.length > 0) {
-        response.sent = false;
-        res.status(200).json(response);
-        return;
+        response.sent = false
+        res.status(200).json(response)
+        return
     }
     
     // Otherwise, we're going to send the email
@@ -34,6 +34,6 @@ const contact = async (req: GatsbyFunctionRequest<ContactFormValuesProps>, res: 
 
     // Then send the response
     res.status(200).json(response)
-};
+}
 
 export default contact;

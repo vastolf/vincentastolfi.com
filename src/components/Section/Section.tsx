@@ -3,8 +3,15 @@ import { Link } from 'gatsby';
 import './styles.css'
 import OffsetAnchor from '../OffsetAnchor/OffsetAnchor';
 
-const Section = (props: {children: JSX.Element | JSX.Element[], id: string, title?: String, flair?: JSX.Element | JSX.Element[], sticky?: boolean}) => {
-    const {children, id, title, flair, sticky = false} = props;
+interface ISectionProps {
+    children: React.ReactNode,
+    id: string,
+    title: string,
+    flair: React.ReactNode,
+    sticky?: boolean
+}
+
+const Section: React.FC<ISectionProps> = ({children, id, title, flair, sticky = false}) => {
     return (
         <section className="section">
             <OffsetAnchor id={id} />

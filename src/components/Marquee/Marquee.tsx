@@ -4,7 +4,7 @@ import StarField from '../StarField/StarField'
 import SVGIcon from '../SVGIcon/SVGIcon'
 import './styles.css'
 
-const Marquee = () => {
+const Marquee: React.FC = () => {
     const marqueeContentRef = useRef<HTMLDivElement>(null);
     const [marqueeContentHeight, setMarqueeContentHeight] = useState<number>(0)
     

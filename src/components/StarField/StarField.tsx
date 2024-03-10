@@ -3,6 +3,11 @@ import CDNImage from '../CDNImage/CDNImage';
 const { vYG, generateStarsBoxShadowsString } = require('../../utils/starUtils');
 import './styles.css'
 
+interface IStarFieldProps {
+    containerHeight: number,
+    settings? : StarFieldSettingsSizeKeysProps
+}
+
 // We only use these types here so we'll instantiate them directly in the template
 type StarFieldSettingsSizeProps = {
     stars: number,
@@ -22,8 +27,7 @@ const defaultSettings : StarFieldSettingsSizeKeysProps = {
 }
 
 // Thanks to Michael Becker for the inspiration for this StarField effect: https://codepen.io/mindsculpt/pen/JJWEJE
-const StarField = (props: {containerHeight: number, settings? : StarFieldSettingsSizeKeysProps}) => {
-    const { containerHeight, settings = defaultSettings } = props;
+const StarField: React.FC<IStarFieldProps> = ({containerHeight, settings = defaultSettings}) => {
     const [windowWidth, setWindowWidth] = useState<number>(0);
     // Used so we can track the windowWidth & determine what the max X coordinate should be for our box shadows
     useEffect(() => {
@@ -53,16 +57,27 @@ const StarField = (props: {containerHeight: number, settings? : StarFieldSetting
                                     settings[size]?.stars,
                                     settings[size]?.brightPercentage
                                 ),
-                                transform : `translateY(-${containerHeight}px)`,
+                                transform: `translateY(-${containerHeight}px)`,
                                 animationDuration: (settings[size]?.duration) ? `${settings[size]?.duration}s` : '',
                                 width: (settings[size]?.dimensions ? settings[size]?.dimensions : ''),
                                 height: (settings[size]?.dimensions ? settings[size]?.dimensions : '')
                             }}
                         >
-                            <div className="star-field__clone" style={{top : `${containerHeight}px`}}></div>
+                            <div
+                                className="star-field__clone"style={{top : `${containerHeight}px`}}></div>
                         </div>
                     })}
-                    <CDNImage className="star-field__egg" src="/me.png" alt={vYG()} width="1" height="1"/>
+                    <CDNImage
+                        className="star-field__egg"
+                        src="/me.png"
+                        alt={vYG()}
+                        width="1"
+                        height="1"
+                        style={{
+                            animationDuration: settings['medium']?.duration ? `${settings['medium']?.duration}s` : '',
+                            transform: `translateY(-${containerHeight}px)`,
+                        }}
+                    />
                 </div>
             }
         </>

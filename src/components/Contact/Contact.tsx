@@ -3,7 +3,7 @@ import ContactForm from '../ContactForm/ContactForm'
 import Section from '../Section/Section'
 import SVGIcon from '../SVGIcon/SVGIcon'
 
-const Contact = () => {
+const Contact: React.FC = () => {
     return (
         <Section
             id="contact"

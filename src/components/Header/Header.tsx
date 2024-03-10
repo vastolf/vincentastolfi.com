@@ -4,7 +4,7 @@ import Navigation from '../Navigation/Navigation'
 import './styles.css'
 import SkipToMain from '../SkipToMain/SkipToMain'
 
-const Header = () => {
+const Header: React.FC = () => {
     const [pageYOffset, setPageYOffset] = useState<number>(0)
     const maxOpacity : number = 85;
     

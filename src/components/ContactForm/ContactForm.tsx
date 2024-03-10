@@ -6,7 +6,7 @@ import { ContactFormValuesProps, ContactSubmissionResponseProps } from '../../ut
 import { nameIsInvalid, emailIsInvalid, messageIsInvalid } from '../../utils/validate'
 import { contactSubmission } from '../../utils/contactUtil';
 
-const ContactForm = () => {
+const ContactForm: React.FC = () => {
     const NAME_ERROR_MESSAGE : string = "Must be between 3 and 30 characters"
     const EMAIL_ERROR_MESSAGE : string = "Please enter a valid email address"
     const MESSAGE_ERROR_MESSAGE : string = "Must be between 3 and 1000 characters"
@@ -124,9 +124,9 @@ const ContactForm = () => {
                 disabled={loading}
             />
             <div
-            className={"contact-form__submit-indicator"+submitIndicatorClass}
-            role="alert"
-            aria-atomic="true"
+                className={"contact-form__submit-indicator"+submitIndicatorClass}
+                role="alert"
+                aria-atomic="true"
             >
                 {(!loading && !editing) ? anyFieldIsInvalid() ? SUBMIT_ERROR_MESSAGE : (resError ? RES_ERROR_MESSAGE :  SUBMIT_SUCCESS_MESSAGE) : ''}
             </div>

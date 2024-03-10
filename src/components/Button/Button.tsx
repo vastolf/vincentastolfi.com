@@ -1,24 +1,16 @@
 import React, { ButtonHTMLAttributes } from 'react'
 import './styles.css'
 
-type ButtonProps = {
+interface IButtonProps {
     className?: string,
     ariaLabel?: string,
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-    children?: JSX.Element | JSX.Element[];
+    children?: React.ReactNode;
     type?: "button" | "submit";
     disabled?: boolean;
 };
 
-const Button = ({
-    className,
-    ariaLabel,
-    children,
-    onClick,
-    type = "submit",
-    disabled
-    } :  ButtonProps) => {
-
+const Button: React.FC<IButtonProps> = ({ className, ariaLabel, children, onClick, type = "submit", disabled }) => {
     return (
         <button aria-label={ariaLabel} className={className} type={type} disabled={disabled} onClick={onClick}>{children}</button>
     )

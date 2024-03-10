@@ -3,7 +3,7 @@ import Section from '../Section/Section'
 import SVGIcon from '../SVGIcon/SVGIcon'
 import './styles.css'
 
-const Experience = () => {
+const Experience: React.FC = () => {
     return (
         <Section
             id={"experience"}

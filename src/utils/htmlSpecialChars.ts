@@ -1,11 +1,10 @@
-
-  // A collection of special characters and their entities.
+// A collection of special characters and their entities.
 const specialchars : Array<Array<string>> = [
     [ '&', '&amp;' ],
     [ '<', '&lt;' ],
     [ '>', '&gt;' ],
     [ '"', '&quot;' ]
-];
+]
 
 const htmlSpecialChars = (string: string) => {
     var escapedString = string;
@@ -17,6 +16,6 @@ const htmlSpecialChars = (string: string) => {
       );
     }
     return escapedString;
-};
+}
 
 export default htmlSpecialChars;

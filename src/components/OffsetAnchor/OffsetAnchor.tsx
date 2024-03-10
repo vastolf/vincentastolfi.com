@@ -1,9 +1,11 @@
 import React from 'react'
 import './styles.css'
 
-const OffsetAnchor = (props: {id: string}) => {
-    const {id} = props;
-    
+interface IOffsetAnchorProps {
+    id: string
+}
+
+const OffsetAnchor: React.FC<IOffsetAnchorProps> = ({id}) => {
     return (
         <div id={id} className="offset-anchor"></div>
     )

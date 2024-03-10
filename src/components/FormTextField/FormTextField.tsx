@@ -4,7 +4,7 @@ import './styles.css'
 
 type FormTextFieldType = "text" | "textarea";
 
-type FormTextFieldProps = {
+interface IFormTextFieldProps {
     type?: FormTextFieldType,
     label: string,
     name: string,
@@ -18,9 +18,7 @@ type FormTextFieldProps = {
 }
 
 
-const FormTextField = (props: FormTextFieldProps) => {
-    const {type = "text", label, name, errorMessage, value, valid, required = false, onTextInputChange, onTextAreaChange, disabled = false} = props;
-    
+const FormTextField: React.FC<IFormTextFieldProps> = ({type = "text", label, name, errorMessage, value, valid, required = false, onTextInputChange, onTextAreaChange, disabled = false}) => {
     return (
         <label className={"form-text-field"+(valid ? "" : " form-text-field__invalid")} htmlFor={name}>
             <div className="form-text-field__text">

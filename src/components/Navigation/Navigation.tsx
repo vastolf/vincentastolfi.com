@@ -2,7 +2,7 @@ import React from 'react'
 import SVGIcon from '../SVGIcon/SVGIcon'
 import './styles.css'
 
-const Navigation = () => {
+const Navigation: React.FC = () => {
     return (
         <nav className="navigation">
             <ul className="navigation__list">

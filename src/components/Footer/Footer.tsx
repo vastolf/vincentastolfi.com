@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import StarField from '../StarField/StarField'
 import './styles.css'
 
-const Footer = () => {
+const Footer: React.FC = () => {
     const footerRef = useRef<HTMLDivElement>(null);
     const [footerHeight, setfooterHeight] = useState<number>(0)
 

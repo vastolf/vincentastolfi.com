@@ -32,7 +32,9 @@ Transition is seamless
 .star-field__egg {
     position: absolute;
     width: 1px;
-    animation: starFieldAnimation 45s linear infinite;
+    animation-name: starFieldAnimation;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
     left: 200px;
 }
 
