@@ -38,7 +38,6 @@ const Marquee = () => {
                         <SVGIcon name="css3" className="marquee__icon" />
                         <SVGIcon name="nodejs" className="marquee__icon" />
                         <SVGIcon name="reactjs" className="marquee__icon" />
-                        <SVGIcon name="drupal" className="marquee__icon" />
                         <SVGIcon name="java" className="marquee__icon" />
                     </div>
                 </div>
