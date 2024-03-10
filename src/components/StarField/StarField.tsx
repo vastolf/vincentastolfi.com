@@ -12,7 +12,7 @@ interface IStarFieldProps {
 type StarFieldSettingsSizeProps = {
     stars: number,
     brightPercentage: number,
-    dimensions?: string,
+    dimensions?: number,
     duration?: number
 }
 
@@ -21,9 +21,9 @@ type StarFieldSettingsSizeKeysProps = {
 };
 
 const defaultSettings : StarFieldSettingsSizeKeysProps = {
-    'small': { stars: 150, brightPercentage: 25, dimensions: "1px", duration: 180 },
-    'medium': { stars: 100, brightPercentage: 15, dimensions: "2px", duration: 135 },
-    'large': { stars: 50, brightPercentage: 2, dimensions: "3px", duration: 90 }
+    'small': { stars: 150, brightPercentage: 25, dimensions: 1, duration: 180 },
+    'medium': { stars: 100, brightPercentage: 15, dimensions: 2, duration: 135 },
+    'large': { stars: 50, brightPercentage: 2, dimensions: 3, duration: 90 }
 }
 
 // Thanks to Michael Becker for the inspiration for this StarField effect: https://codepen.io/mindsculpt/pen/JJWEJE

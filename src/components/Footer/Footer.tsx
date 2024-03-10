@@ -23,9 +23,9 @@ const Footer: React.FC = () => {
                 <StarField
                     containerHeight={footerHeight}
                     settings={{
-                        'small': { stars: 100, brightPercentage: 25, dimensions: "1px", duration: 45 },
-                        'medium': { stars: 50, brightPercentage: 15, dimensions: "2px", duration: 30 },
-                        'large': { stars: 25, brightPercentage: 2, dimensions: "3px", duration: 15 }
+                        'small': { stars: 100, brightPercentage: 25, dimensions: 1, duration: 45 },
+                        'medium': { stars: 50, brightPercentage: 15, dimensions: 2, duration: 30 },
+                        'large': { stars: 25, brightPercentage: 2, dimensions: 3, duration: 15 }
                     }}
                 />
             }
